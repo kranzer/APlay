@@ -50,6 +50,7 @@ void APlay::on_m_playBut_clicked()
     connect(APlay::ui->durationSlider, SIGNAL(sliderMoved(int)), this, SLOT(seek(int)));
     connect(player, SIGNAL(durationChanged(qint64)), SLOT(durationChanged(qint64)));
     connect(player, SIGNAL(positionChanged(qint64)), SLOT(positionChanged(qint64)));
+    durationChanged(player->duration());
 }
 
 void APlay::on_m_pauseBut_clicked()
