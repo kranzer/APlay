@@ -2,7 +2,6 @@
 #include "ui_aplay.h"
 #include <QFileDialog>
 #include <QUrl>
-#include <QMediaPlayer>
 #include <QStandardPaths>
 #include <QTime>
 #include <QThread>
@@ -16,6 +15,7 @@ APlay::APlay(QWidget *parent) :
     player = new QMediaPlayer;
     player->setVolume(defaultVolume);
     ui->volumeSlider->setValue(defaultVolume);
+    playlist = new QMediaPlaylist;
 }
 
 APlay::~APlay()
@@ -35,7 +35,10 @@ void APlay::on_m_selectFileBut_clicked()
         QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath(),
                                      tr("MP3 files (*.mp3);;WAV files (*.wav);;Apple Lossless (*.aac);;All files (*.*)"), &selfilter);
     if (!filePath.isEmpty())
-            player->setMedia(QUrl::fromLocalFile(filePath));
+        playlist->addMedia(QUrl::fromLocalFile(filePath));
+    playlist->setCurrentIndex(1);
+    player->setPlaylist(playlist);
+
 }
 
 void APlay::on_actionExit_triggered()

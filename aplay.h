@@ -4,6 +4,7 @@
 #include <QStringList>
 #include <QMainWindow>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include <QThread>
 
 namespace Ui {
@@ -16,19 +17,13 @@ class APlay : public QMainWindow
 
 public:
     explicit APlay(QWidget *parent = 0);
+    ~APlay();
     QMediaPlayer* player;
     QStringList codecs;
-    ~APlay();
-
+    QMediaPlaylist *playlist;
 
 public slots:
     void seek(int);
-
-    void positionChanged(qint64);
-
-    void durationChanged(qint64);
-
-    void updateDurationInfo(qint64);
 
 private slots:
     void on_m_selectFileBut_clicked();
@@ -41,11 +36,17 @@ private slots:
 
     void on_volumeSlider_valueChanged(int value);
 
+    void positionChanged(qint64);
+
+    void durationChanged(qint64);
+
+    void updateDurationInfo(qint64);
+
+
 private:
     Ui::APlay *ui;
     qint64 duration;
     int defaultVolume;
-
 };
 
 #endif // APLAY_H
