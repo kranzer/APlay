@@ -43,6 +43,8 @@ private slots:
     void updateDurationInfo(qint64);
 
 
+    void on_actionAbout_APlay_triggered();
+
 private:
     Ui::APlay *ui;
     qint64 duration;

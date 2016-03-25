@@ -1,5 +1,6 @@
 #include "aplay.h"
 #include "ui_aplay.h"
+#include "credits.h"
 #include <QFileDialog>
 #include <QUrl>
 #include <QStandardPaths>
@@ -94,4 +95,11 @@ void APlay::updateDurationInfo(qint64 currentInfo)
 void APlay::on_volumeSlider_valueChanged(int value)
 {
     player->setVolume(value);
+}
+
+void APlay::on_actionAbout_APlay_triggered()
+{
+    Credits* credit = new Credits();
+    credit->setWindowTitle("About APlay");
+    credit->show();
 }

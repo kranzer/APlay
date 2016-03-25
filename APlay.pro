@@ -13,8 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        aplay.cpp
+        aplay.cpp \
+    credits.cpp
 
-HEADERS  += aplay.h
+HEADERS  += aplay.h \
+    credits.h
 
-FORMS    += aplay.ui
+FORMS    += aplay.ui \
+    credits.ui
